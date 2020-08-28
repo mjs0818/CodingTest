@@ -1,6 +1,9 @@
 function solution(arr, divisor) {
-    return arr.filter(el =>{
+    arr = arr.filter(el =>{
         return el%divisor === 0;
+    }).sort((a,b)=>{
+        return a-b;
     });
+
+    return arr.length === 0 ? [-1] : arr;
 }
-console.log(solution([1,5,7,10],5));
