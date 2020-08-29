@@ -5,5 +5,6 @@ function solution(array, commands) {
     .sort((a,b)=>{return a-b});
     answer.push(arr[element[2]-1]);      
   });
+  
   return answer;
 }
