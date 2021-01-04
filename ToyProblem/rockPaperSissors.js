@@ -1,24 +1,20 @@
-const rockPaperScissors = function(count){
-    let result = [];
-    let n = count || 3;
-    let rockPaperScissors = ['rock', 'paper', 'scissors'];
-    let array = [];
+const rockPaperScissors = function (count) {
+  let n = count || 3;
+  let rps = ['rock', 'paper', 'scissors'];
+  let array = [];
+  let result = [];
+
+  function recursion(n, array) {
     debugger;
-    function recursion(arr, n, result){
-        if(arr.length === n){
-            result.push(arr.slice());
-            return result;
-        }
-
-        for(let i = 0; i < 3; i++){
-            arr.push(rockPaperScissors[i])
-            result = recursion(arr, n, result);
-            arr.pop();
-        }
-        return result;
+    if (n === 0) {
+      result.push(array);
+      return;
     }
+    for (let i = 0; i < rps.length; i++) {
+      recursion(n - 1, array.concat(rps[i]));
+    }
+  }
 
-    result = recursion(array, n, result);
-    return result;
-}
-console.log(rockPaperScissors(10));
+  recursion(n, array);
+  return result;
+};
