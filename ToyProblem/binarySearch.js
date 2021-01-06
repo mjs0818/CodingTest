@@ -1,30 +1,17 @@
-const binarySearch = function (array, target) {
-    // TODO: Your code here!
-    let first = 0, last = array.length -1, middle = Math.floor((last + first)/2);
-    if(array[first] === target){
-        return first;
-    }
-    if(array[last]===target){
-        return last;
-    }
-    while(true) {
-        if(array[middle] === target){
-            return middle;
-        }else{
-            if(first === middle || middle === last){
-                return null;
-            }
-        }
+const binarySearch = function (arr, target) {
+  // TODO : 여기에 코드를 작성합니다.
+  let start = 0;
+  let end = arr.length - 1;
 
-        if(array[middle] > target){
-            last = middle;
-            middle = Math.floor((last + first)/2);
-        }else{
-            first = middle;
-            middle = Math.floor((last + first)/2);
-        }
-
-    };
+  while (start <= end) {
+    let middle = parseInt((start + end) / 2);
+    if (arr[middle] === target) {
+      return middle;
+    } else if (arr[middle] < target) {
+      start = middle + 1;
+    } else {
+      end = middle - 1;
+    }
+  }
+  return -1;
 };
-
-console.log(binarySearch([1,2,3,4,5],5));
